@@ -1,5 +1,5 @@
 Counter::Application.routes.draw do
-
+  root 'users#add'
   resources :users, :defaults => { :format => "json" }
 
   match '/users/login', to: 'users#login', via: :post
