@@ -44,17 +44,18 @@ class UsersController < ApplicationController
 
   def reset
   	User.destroy_all()
-	render :json => { errCode: 1 }
+	  render :json => { errCode: 1 }
   end
 
   def tests
-  	result_old = `rspec`
-	result  = result_old.split(" ")
-	total_test = result[result.index("examples,") - 1]
-	failures   = result[result.index("failures") - 1]
+  	result = `rspec spec/requests/unit_tests_spec.rb --format documentation > output.txt`
+    result = `cat output.txt`
+    result_split  = result.split(" ")
+	  total_test = result_split[result_split.index("examples,") - 1]
+	  failures   = result_split[result_split.index("failures") - 1]
 
-	render :json => { nrFailed: failures.to_i,
-					  output: result_old,
+	  render :json => { nrFailed: failures.to_i,
+					  output: result,
 					  totalTests: total_test.to_i }
   end
 

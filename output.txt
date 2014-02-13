@@ -1,0 +1,24 @@
+
+UnitTests
+  should respond to #password
+  should respond to #name
+  should respond to #password_digest
+  should respond to #counter
+  password can be empty
+    should be valid
+  name must be unique
+    should not be valid
+  name can't be blank
+    should not be valid
+  password can't be too long
+    should not be valid
+  common names is valid
+    should be valid
+  name can't be too long
+    should not be valid
+
+Finished in 1.15 seconds
+10 examples, 0 failures
+
+Randomized with seed 56097
+
